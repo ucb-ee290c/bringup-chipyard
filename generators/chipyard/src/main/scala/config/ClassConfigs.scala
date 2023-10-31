@@ -25,7 +25,7 @@ class DigitalChipBringupHostConfig extends Config(
   //=============================
   // Setup the SerialTL side on the bringup device
   //=============================
-  new testchipip.WithSerialTLWidth(4) ++                                       // match width with the chip
+  new testchipip.WithSerialTLWidth(1) ++                                       // match width with the chip
   new testchipip.WithSerialTLMem(base = 0x0, size = 0x80000000L,               // accessible memory of the chip that doesn't come from the tethered host
                                  idBits = 4, isMainMemory = false) ++          // This assumes off-chip mem starts at 0x8000_0000
   new testchipip.WithSerialTLClockDirection(provideClockFreqMHz = None) ++     // DUT provides clock
