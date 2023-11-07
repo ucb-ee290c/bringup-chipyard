@@ -307,7 +307,7 @@ class WithSerialTLIOCells extends OverrideIOBinder({
 class WithSerialTLPunchthrough extends OverrideIOBinder({
   (system: CanHavePeripheryTLSerial) => system.serial_tl.map({ s =>
     val sys = system.asInstanceOf[BaseSubsystem]
-    val port = IO(s.getWrappedValue.cloneType)
+    val port = IO(chiselTypeOf(s.getWrappedValue))
     port <> s.getWrappedValue
     (Seq(port), Nil)
   }).getOrElse((Nil, Nil))
