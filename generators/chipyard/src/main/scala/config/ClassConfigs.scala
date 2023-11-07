@@ -1,9 +1,13 @@
 package chipyard
 
+import org.chipsalliance.cde.config.Config
 import freechips.rocketchip.tilelink.TLBundleParameters
+import freechips.rocketchip.diplomacy._
+import freechips.rocketchip.subsystem.{MBUS, SBUS}
+import testchipip.{OBUS, SerialTLKey}
 
 class WithRoboSerialTLParams extends Config((site, here, up) => {
-  case SerialTLKey => Some(SerialTLParams(
+  case SerialTLKey => up(SerialTLKey).map(p => p.copy(
     bundleParams = TLBundleParameters(
       addressBits=35, dataBits=64,
       sourceBits=4, sinkBits=5, sizeBits=4,
